@@ -6,30 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./register.css">
+    <link rel="stylesheet" href="../Login/login.css">
 </head>
 <body>
     <Main>
         <div class="form-container">
             <form action="">
+
                 <h1>Register</h1>
+                <p class="error"></p>
+
                 <label>
                     Username:
                     <input type="text" name="user-name" class="user-name">
                 </label>
+
                 <label>
-                    Password:
+                    Email:
                     <input type="text" name="email" class="email">
                 </label>
+
                 <label>
                     Password:
                     <input type="text" name="password1" class="password1">
                 </label>
+
                 <label>
                     Password:
                     <input type="text" name="password2" class="password2">
                 </label>
+                <button type="submit">Register</button>
             </form>
-            <h2>You don't have an account? <a href="../Register/register.html" target="_self">Register</a></h2>
+            <h2>You have an account?<a href="../Login/login.html" target="_self">Login</a></h2>
         </div>
     </Main>
     <script src="./register.js"></script>

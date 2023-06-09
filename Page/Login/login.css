@@ -17,6 +17,13 @@ Main{
     display: grid;
     place-items: center;
 }
+.form-container{
+  width: fit-content;
+  max-height: fit-content;
+  padding: 5em;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 2em;
+}
 form{
     display: flex;
     flex-direction: column;
