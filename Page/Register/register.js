@@ -6,11 +6,18 @@ const errorText = document.querySelector(".error")
 
 const form = document.querySelector("form")
 
+const allUsersData = []
+
+
 // set the state of email validity and change according to the validation
 let emailIsValid = false
 let passwordValid = false
 let passwordMatch = false
 let userNameValid = false
+
+let email
+let username
+let password
 
 
 
@@ -20,6 +27,7 @@ userName.addEventListener("change", (event)=>{
  let userNameInput = event.target.value
  if (userNameInput.length > 2) {
     userNameValid = true
+    username = userNameInput
     errorText.textContent = ""
  } else {
     userNameValid = false
@@ -37,6 +45,7 @@ userEmail.addEventListener("blur", (event)=>{
 
    if (emailRegex.test(emailInput) ) {
     emailIsValid = true
+    email = emailInput
     errorText.textContent = ""
    } else {
     emailIsValid= false
@@ -69,6 +78,7 @@ password2.addEventListener("change", (event)=>{
     passwordMatch = false
     errorText.textContent = "Password Didn't match"
    }else{
+      password= mainPassword
     errorText.textContent = ""
     passwordMatch = true
    }
@@ -79,7 +89,16 @@ password2.addEventListener("change", (event)=>{
 form.addEventListener("submit", (event)=>{
     event.preventDefault()
     if (emailIsValid && passwordValid && passwordMatch && userNameValid) {
-        form.submit()
+        const userObject= {
+         "userName":username,
+         "email":email,
+         "password": password
+        }
+     allUsersData.push(userObject)
+     localStorage.setItem("allUsersData", JSON.stringify(allUsersData))
+     console.log(userObject)
+   //   form.submit()
+        
         errorText.textContent = ""
     } else {
         errorText.textContent= "You have an error in filling the form"
