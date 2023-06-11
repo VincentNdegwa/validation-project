@@ -94,10 +94,13 @@ form.addEventListener("submit", (event)=>{
          "email":email,
          "password": password
         }
+        console.log(userObject)
+        localStorage.removeItem("currentUser")
+        localStorage.setItem("currentUser", JSON.stringify(userObject))
      allUsersData.push(userObject)
      localStorage.setItem("allUsersData", JSON.stringify(allUsersData))
-     console.log(userObject)
-   //   form.submit()
+     form.submit()
+     window.location.href= "../Dashboard/dashboard.html"
         
         errorText.textContent = ""
     } else {
