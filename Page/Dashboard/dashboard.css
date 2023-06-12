@@ -1,0 +1,14 @@
+Header{
+    position: absolute;
+}
+nav>a{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 1em;
+    text-decoration: none;
+}
+.bx{
+    font-size: 2em;
+}

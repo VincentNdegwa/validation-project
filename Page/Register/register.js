@@ -3,6 +3,10 @@ const userEmail = document.querySelector(".email")
 const password1 = document.querySelector(".password1")
 const password2 = document.querySelector(".password2")
 const errorText = document.querySelector(".error")
+const passwords = document.querySelectorAll(".password")
+const eyeIcon = document.querySelectorAll(".bi")
+
+
 
 const form = document.querySelector("form")
 
@@ -109,3 +113,47 @@ form.addEventListener("submit", (event)=>{
 })
 
 
+
+
+passwords.forEach((password, index)=>{
+   password.addEventListener("input", ()=>{
+      const currentPass = [...passwords].find((pass, i)=> i === index)
+      if (eyeIcon[index].className === "bi bi-eye") {
+        
+         currentPass.type = "text"
+      }else{
+         
+         currentPass.type = "password"
+      }
+   })
+
+   eyeIcon[index].addEventListener("click", ()=>{
+      if (password.type === "password") {
+      password.type = "text";
+      eyeIcon[index].className = "bi bi-eye";
+    } else {
+      password.type = "password";
+      eyeIcon[index].className = "bi bi-eye-slash-fill";
+    }
+   })
+
+
+})
+
+// /////////
+
+// passwords.forEach((password)=>{
+//    password.addEventListener("input", ()=>{
+//       password.type = "password"
+//    })
+// })
+// eyeIcon.forEach((icon)=>{
+//    icon.addEventListener("click", ()=>{
+//       console.log("clicked")
+//       if (icon.className === "bi bi-eye") {
+//          icon.className = "bi bi-eye-slash-fill"
+//       } else {
+//          icon.className = "bi bi-eye"
+//       }
+//    })
+// })

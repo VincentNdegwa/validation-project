@@ -3,6 +3,8 @@ const password = document.querySelector(".password")
 const errorText = document.querySelector(".error")
 const userData = JSON.parse(localStorage.getItem("allUsersData"))
 const form = document.querySelector("form")
+const eyeIcon =document.querySelector(".bi")
+
 
 let currentUser 
 let passwordInput 
@@ -34,6 +36,16 @@ userName.addEventListener("change", (event)=>{
         localStorage.setItem("currentUser", JSON.stringify(currentUser))
     }
     
+})
+
+
+
+password.addEventListener("input", (event)=>{
+  if (eyeIcon.className === "bi bi-eye") {
+  password.type="text"
+} else {
+  password.type="password"
+}
 })
 
 password.addEventListener("change",(event)=>{
@@ -73,4 +85,13 @@ form.addEventListener("submit", (event)=>{
   }
 })
 
+eyeIcon.addEventListener("click", () => {
+  if(eyeIcon.className === "bi bi-eye"){
+    password.type="password"
+    eyeIcon.className = "bi bi-eye-slash-fill"
+  }else{
+    password.type="text"
+    eyeIcon.className = "bi bi-eye"
+  }
+});
 
