@@ -50,14 +50,11 @@ password.addEventListener("input", (event)=>{
 
 password.addEventListener("change",(event)=>{
     passwordInput = event.target.value
-    let numberRegex = /^(?=.*\d).+$/
   if (passwordInput.length < 6 || passwordInput.length > 13) {
     errorText.textContent = "Password must not contain less than 6 or greater than 13 characters";
     passwordValid = false
-  } else if(!numberRegex.test(passwordInput)){
-    errorText.textContent = "Password should contain atleast one number"
-    passwordValid = false
-  }else{
+  } 
+  else{
     errorText.textContent = ""
     passwordValid = true
   }

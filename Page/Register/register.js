@@ -40,14 +40,80 @@ userName.addEventListener("change", (event)=>{
 })
 
 
+
 // email valiidation
 userEmail.addEventListener("blur", (event)=>{
 
    const emailInput = event.target.value
-// initialising the regular expression that checks the format of the email if it is  correct
-   let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+   // test@gmail.com
+   // o,1,2,3,4
+   // 14
 
-   if (emailRegex.test(emailInput) ) {
+   const emailTest=(email)=>{
+    let atIndex = email.indexOf("@")
+    let domainPart = email.slice(atIndex,email.length)
+    let localPart = email.slice(0, atIndex)
+    let emailArray = email.split("")
+    let arrayOfAt = emailArray.filter((item)=> item == "@")
+    let firstIndexOfQuoted = email.indexOf('"')
+    let lastIndexOfQuoted = email.lastIndexOf('"')
+    let quotedEmail = email.slice(firstIndexOfQuoted, lastIndexOfQuoted+1)
+    let arrSpecialChars = emailArray.filter((item)=>{
+       let specialChars = [" ", "(", ")", ",",":", ";", "<", ">","[","]","\\", ".."]
+        return specialChars.includes(item)        
+    })
+    let dotFirstIndex = email.indexOf(".")
+    // let printableChars = ["#","!","$","&","'","*","+","-","=","?","^","_","`","{","}","|","~"]
+    let unqoutedString = localPart.replace(quotedEmail,"")
+    
+    if (atIndex == 0 || atIndex >= email.length-1) {
+        console.log("false emale, related with @")
+    }
+    if (localPart > 64) {
+        console.log("long email")
+         return false
+        }
+    if (domainPart.includes("_")) {
+    
+        console.log("no underscores in the domain part")
+        return false
+    }
+    if (arrayOfAt.length>1 || arrayOfAt.length < 1) {
+        console.log("email should have one @")
+        return false
+    }
+    if (email.startsWith(".")|| email.endsWith(".")) {
+        
+       console.log("email shoul not start or end with a dot") 
+       return false
+    }
+     if(email.startsWith("-")|| email.endsWith("-")) {
+        
+       console.log("email should not start or end with a hyphen") 
+       return false
+    }
+    if (unqoutedString.length>0) {
+        if (arrSpecialChars.some((item)=> unqoutedString.includes(item))) {
+            console.log("special characters should be quoted")
+            return false
+        }
+    }
+    if ((quotedEmail.length> 0) && (email[lastIndexOfQuoted+1] !== ".")) {
+      if (quotedEmail == localPart) {
+         console.log("dot is an exception when the the quoted part is the local part")
+      }else{
+         console.log(quotedEmail.length)
+         console.log(lastIndexOfQuoted);
+         console.log("the quote must have a period after it ")
+         return false
+      }
+    }
+  
+   return true
+}
+
+
+   if (emailTest(emailInput) ) {
     emailIsValid = true
     email = emailInput
     errorText.textContent = ""
@@ -60,13 +126,10 @@ userEmail.addEventListener("blur", (event)=>{
 
 // password validation
 password1.addEventListener("change", (event) => {
-    let numberRegex = /^(?=.*\d).+$/
+    
   let password1Input = event.target.value;
   if (password1Input.length < 6) {
     errorText.textContent = "Password must not contain less than 6 letters";
-    passwordValid = false
-  } else if(!numberRegex.test(password1Input)){
-    errorText.textContent = "Password should contain atleast one number"
     passwordValid = false
   }else{
     errorText.textContent = ""
