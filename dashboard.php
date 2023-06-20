@@ -8,7 +8,7 @@
     <title>Document</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="./page.css">
-    <link rel="stylesheet" href="./dashboar.css">
+    <link rel="stylesheet" href="./dashboard.css">
 </head>
 
 <body>

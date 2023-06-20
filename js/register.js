@@ -63,7 +63,7 @@ userEmail.addEventListener("blur", (event)=>{
        let specialChars = [" ", "(", ")", ",",":", ";", "<", ">","[","]","\\", ".."]
         return specialChars.includes(item)        
     })
-      console.log("my local part should be here")
+      
    //  let dotFirstIndex = email.indexOf(".")
     // let printableChars = ["#","!","$","&","'","*","+","-","=","?","^","_","`","{","}","|","~"]
       let unqoutedString = localPart.replace(quotedEmail, "")

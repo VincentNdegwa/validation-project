@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,7 +44,7 @@
             <h2>You have an account?<a href="./login.php" target="_self">Login</a></h2>
         </div>
     </Main>
-    <script src="./js/register.js"></script>
+    <script src="./js/register.js?v=1"></script>
 </body>
 
 </html>
