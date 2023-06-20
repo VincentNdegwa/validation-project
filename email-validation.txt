@@ -1,7 +1,0 @@
-email should not start or end with a dot,@,space(unless quoted and only on the start or the email), hyphen
-email should not have special characters that are not inside the the quoted email
-email should not have more than one @
-the quoted email should be separeted from the other part of the email using a dot
-the domain part should not have underscores _
-the local part should should not contain more than 64 characters
-

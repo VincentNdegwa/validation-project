@@ -46,9 +46,10 @@ userEmail.addEventListener("blur", (event)=>{
 
    const emailInput = event.target.value
    // test@gmail.com
-   // o,1,2,3,4
+   // [o,1,2,3,4,@,g,m,a,i,l,.,c,o,m]
    // 14
-
+   // local@doma.in
+   
    const emailTest=(email)=>{
     let atIndex = email.indexOf("@")
     let domainPart = email.slice(atIndex,email.length)
@@ -62,23 +63,23 @@ userEmail.addEventListener("blur", (event)=>{
        let specialChars = [" ", "(", ")", ",",":", ";", "<", ">","[","]","\\", ".."]
         return specialChars.includes(item)        
     })
-    let dotFirstIndex = email.indexOf(".")
+      console.log("my local part should be here")
+   //  let dotFirstIndex = email.indexOf(".")
     // let printableChars = ["#","!","$","&","'","*","+","-","=","?","^","_","`","{","}","|","~"]
-    let unqoutedString = localPart.replace(quotedEmail,"")
+      let unqoutedString = localPart.replace(quotedEmail, "")
     
     if (atIndex == 0 || atIndex >= email.length-1) {
-        console.log("false emale, related with @")
+        console.log("false email, related with @")
     }
-    if (localPart > 64) {
-        console.log("long email")
+    if ((localPart > 64)|| (localPart.length<=0)) {
+        console.log("wrong email size")
          return false
         }
     if (domainPart.includes("_")) {
-    
         console.log("no underscores in the domain part")
         return false
     }
-    if (arrayOfAt.length>1 || arrayOfAt.length < 1) {
+    if (arrayOfAt.length != 1) {
         console.log("email should have one @")
         return false
     }
@@ -101,6 +102,7 @@ userEmail.addEventListener("blur", (event)=>{
     if ((quotedEmail.length> 0) && (email[lastIndexOfQuoted+1] !== ".")) {
       if (quotedEmail == localPart) {
          console.log("dot is an exception when the the quoted part is the local part")
+         return true
       }else{
          console.log(quotedEmail.length)
          console.log(lastIndexOfQuoted);
@@ -167,16 +169,13 @@ form.addEventListener("submit", (event)=>{
      allUsersData.push(userObject)
      localStorage.setItem("allUsersData", JSON.stringify(allUsersData))
      form.submit()
-     window.location.href= "../Dashboard/dashboard.html"
+   //   window.location.href= "../Dashboard/dashboard.html"
         
         errorText.textContent = ""
     } else {
         errorText.textContent= "You have an error in filling the form"
     }
 })
-
-
-
 
 passwords.forEach((password, index)=>{
    password.addEventListener("input", ()=>{

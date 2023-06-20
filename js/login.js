@@ -20,22 +20,13 @@ userName.addEventListener("change", (event)=>{
 
     // validate the username length
     userNameInput = event.target.value
-    if (userNameInput.length < 3 || userNameInput.length > 13) {
+    if (userNameInput.length < 5 || userNameInput.length > 13) {
       userNameValid= false
-        errorText.textContent = "Username should be between 3 to 13 characters"
+        errorText.textContent = "Username should be between 5 to 13 characters"
     }else{
       userNameValid= true
         errorText.textContent = ""
-    }
-    currentUser = userData?.find((item)=> item.userName === userNameInput)
-    if (!currentUser) {
-        errorText.textContent = "Account don't exist please create an account"
-    } else {
-        errorText.textContent=""
-        localStorage.removeItem("currentUser")
-        localStorage.setItem("currentUser", JSON.stringify(currentUser))
-    }
-    
+    }  
 })
 
 
@@ -58,14 +49,6 @@ password.addEventListener("change",(event)=>{
     errorText.textContent = ""
     passwordValid = true
   }
-
-  if (passwordInput === currentUser?.password) {
-    errorText.textContent =""
-    passwordValid = true
-  } else {
-    passwordValid = false
-    errorText.textContent = "Password or Username did not match"
-  }
 })
 
 form.addEventListener("submit", (event)=>{
@@ -73,8 +56,7 @@ form.addEventListener("submit", (event)=>{
   if (passwordValid && userNameValid) {
     form.submit()
     errorText.textContent= ""
-    allowLogin = true
-    window.location.href = "../Dashboard/dashboard.html"
+    // allowLogin = true
 
   } else {
     allowLogin = false

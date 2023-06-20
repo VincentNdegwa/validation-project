@@ -1,7 +1,8 @@
-Header{
+Header {
     position: absolute;
 }
-nav>a{
+
+nav>a {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
@@ -9,6 +10,7 @@ nav>a{
     column-gap: 1em;
     text-decoration: none;
 }
-.bx{
+
+.bx {
     font-size: 2em;
 }
